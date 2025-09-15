@@ -1,0 +1,54 @@
+{
+  "Time": "10000",
+  "Title": "Sample",
+  "topic": "Social",
+  "Questions": [
+    {
+      "Question": "What is the purpose of the local development server in Vite?",
+      "Options": [
+        "To deploy production builds",
+        "To provide hot-reloading during development",
+        "To minify code for production",
+        "To manage plugins"
+      ],
+      "type": "MCQ",
+      "Answer": "To provide hot-reloading during development",
+      "Difficulty": "1",
+      "Priority": "2"
+    },
+    {
+      "Question": "Which bundlers does Vite use internally?",
+      "Options": [
+        "Webpack and Babel",
+        "Rollup and esbuild",
+        "Parcel and SWC",
+        "Gulp and Grunt"
+      ],
+      "type": "MCQ",
+      "Answer": "Rollup and esbuild",
+      "Difficulty": "1",
+      "Priority": "2"
+    },
+    {
+      "Question": "Who created Vite?",
+      "Options": ["Dan Abramov", "Evan You", "Ryan Dahl", "Brendan Eich"],
+      "type": "MCQ",
+      "Answer": "Evan You",
+      "Difficulty": "1",
+      "Priority": "2"
+    },
+    {
+      "Question": "Vite’s Hot Module Replacement (HMR) feature is used for:",
+      "Options": [
+        "Minimizing bundle size",
+        "Replacing outdated modules instantly during development",
+        "Compressing files for production",
+        "Managing dependencies"
+      ],
+      "type": "MCQ",
+      "Answer": "Replacing outdated modules instantly during development",
+      "Difficulty": "1",
+      "Priority": "2"
+    }
+  ]
+}

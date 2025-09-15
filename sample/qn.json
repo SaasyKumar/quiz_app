@@ -1,0 +1,23 @@
+{
+  "Time": "10000",
+  "Title": "Sample",
+  "topic": "Social",
+  "Questions": [
+    {
+      "Question": "Capital of India",
+      "Options": ["Delhi", "Chennai", "Mumbai", "Kolkata"],
+      "type": "MCQ",
+      "Answer": "Delhi",
+      "Difficulty": "1",
+      "Priority": "2"
+    },
+    {
+      "Question": "Capital of TamilNadu",
+      "Options": ["Madurai", "Chennai", "Trichy", "Erode"],
+      "type": "MCQ",
+      "Answer": "Chennai",
+      "Difficulty": "1",
+      "Priority": "2"
+    }
+  ]
+}
