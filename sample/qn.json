@@ -7,7 +7,7 @@
       "Question": "Capital of India",
       "Options": ["Delhi", "Chennai", "Mumbai", "Kolkata"],
       "type": "MCQ",
-      "Answer": "Delhi",
+      "Answer": "A",
       "Difficulty": "1",
       "Priority": "2"
     },

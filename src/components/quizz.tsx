@@ -1,6 +1,6 @@
 import { useState } from "react";
 import timeConvert from "../utils/convert.ts";
-import MCQ from "./mcq.tsx";
+import Question from "./question.tsx";
 
 function Quizz(data: { Questions: Array<any>; Title?: string; Time?: string }) {
   let title = data.Title;
@@ -8,10 +8,6 @@ function Quizz(data: { Questions: Array<any>; Title?: string; Time?: string }) {
   let questions = data.Questions;
   let [currentIndex, setCurrentIndex] = useState(0);
   let [currentQn, setCurrentQn] = useState(questions[currentIndex]);
-  let QuestionUI;
-  if (currentQn && currentQn.type === "MCQ") {
-    QuestionUI = MCQ(currentQn);
-  }
   function moveNextQn() {
     setCurrentIndex(++currentIndex);
     setCurrentQn(questions[currentIndex]);
@@ -20,24 +16,26 @@ function Quizz(data: { Questions: Array<any>; Title?: string; Time?: string }) {
     setCurrentIndex(--currentIndex);
     setCurrentQn(questions[currentIndex]);
   }
-  let next = null;
-  console.log(currentIndex);
-  if (currentIndex != questions.length - 1) {
-    next = <button onClick={moveNextQn}>Next</button>;
-  }
-  let previous =
-    currentIndex != 0 ? (
-      <button onClick={movePreviousQn}>Previous</button>
-    ) : null;
   return (
     <>
       <span>Title: {title}</span>
       <br></br>
       <span>Time: {timer.fullMinutes()} minutes</span>
-      {QuestionUI}
+      <Question
+        Question={currentQn.Question}
+        Options={currentQn.Options}
+        Answer={currentQn.Answer}
+      ></Question>
       <br></br>
-      {previous}
-      {next}
+      <button onClick={movePreviousQn} disabled={currentIndex === 0}>
+        Previous
+      </button>
+      <button
+        onClick={moveNextQn}
+        disabled={currentIndex === questions.length - 1}
+      >
+        Next
+      </button>
     </>
   );
 }

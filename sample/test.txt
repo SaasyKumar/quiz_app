@@ -1,0 +1,69 @@
+1. What is the purpose of the local development server in Vite?
+a) To deploy production builds
+b) To provide hot-reloading during development
+c) To minify code for production
+d) To manage plugins
+Answer: b) To provide hot-reloading during development
+
+2. Which bundlers does Vite use internally?
+a) Webpack and Babel
+b) Rollup and esbuild
+c) Parcel and SWC
+d) Gulp and Grunt
+Answer: b) Rollup and esbuild
+
+3. Who created Vite?
+a) Dan Abramov
+b) Evan You
+c) Ryan Dahl
+d) Brendan Eich
+Answer: b) Evan You
+
+4. Vite’s Hot Module Replacement (HMR) feature is used for:
+a) Minimizing bundle size
+b) Replacing outdated modules instantly during development
+c) Compressing files for production
+d) Managing dependencies
+Answer: b) Replacing outdated modules instantly during development
+
+5. By default, what does Vite use as the entry point for a project?
+a) src/main.jsx
+b) index.js
+c) projectroot/index.html
+d) dist/index.html
+Answer: c) projectroot/index.html
+
+6. Where are build outputs stored in a Vite project?
+a) /src
+b) /dist
+c) /build
+d) /public
+Answer: b) /dist
+
+7. Which configuration field is used to set multiple entry points in Vite?
+a) plugins
+b) root
+c) build.rollupOptions.input
+d) entry
+Answer: c) build.rollupOptions.input
+
+8. To add TailwindCSS in Vite, which plugin configuration is correct?
+a) plugins: [tailwind()]
+b) plugins: [react(), tailwindcss()]
+c) plugins: [vite(), tailwind()]
+d) plugins: [rollup(), tailwindcss()]
+Answer: b) plugins: [react(), tailwindcss()]
+
+9. If both JS and JSX are used in a Vite React app, what is the main problem?
+a) JSX cannot be compiled
+b) Only one script/JSX file can be appended as entry point
+c) Rollup does not support multiple files
+d) Babel conflicts with esbuild
+Answer: b) Only one script/JSX file can be appended as entry point
+
+10. How can React components be used in plain JS if mixing JS and JSX in Vite?
+a) Import JSX directly in JS without build
+b) Use Rollup to export React components into global variables, then call them in JS
+c) Convert JSX to vanilla JS manually
+d) Use Webpack alongside Vite
+Answer: b) Use Rollup to export React components into global variables, then call them in JS
