@@ -1,0 +1,31 @@
+.outterdiv {
+  --bg-on-select-colorcode: 124, 58, 237;
+  --bg-on-select-color: rgb(var(--bg-on-select-colorcode));
+  --bg-initial-colorcode: 125, 121, 132;
+  --bg-initial-color: rgb(var(--bg-initial-colorcode));
+  display: inline-flex;
+  align-items: center;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  height: 20px;
+  width: 35px;
+  margin: 0px 5px;
+  background-color: var(--bg-initial-color);
+}
+.checked {
+  background-color: var(--bg-on-select-color);
+}
+.weball {
+  position: relative;
+  left: 1px;
+  background-color: white;
+  width: 17px;
+  height: 18px;
+  border-radius: 100%;
+}
+.checked .weball {
+  left: 16px;
+}

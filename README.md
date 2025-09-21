@@ -4,12 +4,15 @@
 
 - basic app that loads sample data
 - can check answers when the answer is index with number or alphabet
+- can extract questions from AikenFormat
+- a create quiz page
 
 # Do
 
 - If show score at last use use radio button else use normal button
 - View Score or consecutive test -> next test will only contain wrong answered
 - Do random later first right flow
+- if the options are list map it with a b c d before giving it an id , then shuffle the components
 
 # Learning
 
@@ -20,7 +23,20 @@
   - `++i` will work PRE
 
 * While passing objects to a react component, don't pass the whole object, pass it every key value pair mentioned in the object.
+* `rem` in CSS don't know what but in ref to root element. I think it will be used on react apps and it have mobile too. Auto?
 
 # Prettier
 
 - run `npx prettier . --write` before commit. other prettier hooks interrupt while writing code.
+
+# Name
+
+- FOMizz - Fear of Missing Out
+
+# icons
+
+- crushed paper and neuron links on the crushed edges
+- rubik cubes
+
+# Multiverse
+- Contains component that can be used in other websites too

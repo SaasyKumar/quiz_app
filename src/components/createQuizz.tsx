@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { ChangeEvent } from "react";
-import { extractFromAikenFormat } from "../utils/extractQn.ts";
+import { extractFromAikenFormat } from "../../multiverse/utils/extractQn.ts";
 function CreateQuizz() {
   let [inputdata, setInputData] = useState("");
   function setInput(ev: ChangeEvent<HTMLTextAreaElement>) {
@@ -11,8 +11,12 @@ function CreateQuizz() {
   }
   return (
     <>
-      <textarea placeholder="Paste data here" onChange={setInput} />
-      <button onClick={loadData}>Load Data</button>
+      <div>
+        <textarea placeholder="Paste data here" onChange={setInput} />
+      </div>
+      <button className="primarybtn" onClick={loadData}>
+        Load Data
+      </button>
     </>
   );
 }

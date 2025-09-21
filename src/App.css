@@ -1,6 +1,78 @@
+@import "tailwindcss";
 #root {
-  max-width: 1280px;
+  height: 100vh;
+  width: 100vw;
+  display: inline-flex;
+  justify-content: center;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    "Inter",
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+.main_ui {
+  margin: 5px;
+  padding: 20px;
+}
+.appinfo {
+  font-size: 16px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+.primarybtn {
+  background-color: var(--quizz-primary-color);
+  border: none;
+}
+.primarybtn:hover {
+  background-color: var(--quizz-primary-hover-color);
+  border: none;
+}
+.mainmenubtn {
+  display: block;
+  width: 100%;
+  margin: 4px;
+  height: 60px;
+  font-size: 23px;
+  font-weight: 500;
+}
+.optionsMenu {
+  display: inline-block;
+  width: 1000px;
+  margin: 2px;
+  padding: 2px;
+}
+
+/* For Quizz Comp*/
+.questions_div {
+  display: block;
+  height: 500px;
+  width: 1000px;
+  margin: 10px;
+  padding: 5px;
+}
+.show_score {
+  position: absolute;
+  left: 35px;
+  top: 20px;
+  font-weight: 400;
+}
+.timer {
+  position: absolute;
+  right: 35px;
+  top: 20px;
 }

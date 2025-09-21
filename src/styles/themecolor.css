@@ -1,0 +1,6 @@
+:root {
+  --quizz-primary-colorcode: 124, 58, 237;
+  --quizz-primary-color: rgb(var(--quizz-primary-colorcode));
+  --quizz-primary-hover-colorcode: 139, 92, 246;
+  --quizz-primary-hover-color: rgb(var(--quizz-primary-hover-colorcode));
+}
