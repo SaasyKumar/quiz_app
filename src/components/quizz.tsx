@@ -27,11 +27,9 @@ function Quizz(props: {
   return (
     <>
       <div className="questions_div">
-        <Toggle
-          content="Show Answer"
-          divclass="show_score"
-          onToggle={onShowAnswerToggle}
-        ></Toggle>
+        <div className="show_score">
+          <Toggle content="Show Answer" onToggle={onShowAnswerToggle}></Toggle>
+        </div>
         <h1>{title}</h1>
         <br></br>
         <span className="timer">Time: {timer.fullMinutes()} minutes</span>
