@@ -1,5 +1,5 @@
 import { useState } from "react";
-import timeConvert from "../../multiverse/utils/convert.ts";
+import convertTime from "../../multiverse/utils/convert.ts";
 import Toggle from "../../multiverse/components/toggle.tsx";
 import Question from "./question.tsx";
 
@@ -9,7 +9,7 @@ function Quizz(props: {
   Time?: string;
 }) {
   let title = props.Title;
-  let timer = timeConvert(props.Time || "");
+  let timer = convertTime(props.Time || "");
   let questions = props.Questions;
   let [currentIndex, setCurrentIndex] = useState(0);
   let [currentQn, setCurrentQn] = useState(questions[currentIndex]);
@@ -32,7 +32,7 @@ function Quizz(props: {
         </div>
         <h1>{title}</h1>
         <br></br>
-        <span className="timer">Time: {timer.fullMinutes()} minutes</span>
+        <div className="timer">Time: {timer.fullMinutes()} minutes</div>
         <Question
           Question={currentQn.Question}
           Options={currentQn.Options}

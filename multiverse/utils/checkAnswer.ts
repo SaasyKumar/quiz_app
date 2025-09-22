@@ -1,16 +1,19 @@
-export function checkAnswerFromButton(
-  element: HTMLButtonElement,
-  answer: string,
+export function validateAnswerFromButton(
+  answerButton: HTMLButtonElement,
+  expectedAnswer: string,
 ) {
-  console.log(element.id);
-  let options = ["A", "B", "C", "D", "E", "F", "G"];
-  if (element.textContent == answer) {
+  console.log(answerButton.id);
+  let validAnswerOptions = ["A", "B", "C", "D", "E", "F", "G"];
+  if (answerButton.textContent == expectedAnswer) {
     return true;
-  } else if (element.id == answer) {
+  } else if (answerButton.id == expectedAnswer) {
     return true;
-  } else if (options[Number(element.id)] == answer.toUpperCase()) {
+  } else if (validAnswerOptions[Number(answerButton.id)] == expectedAnswer.toUpperCase()) {
     return true;
   }
   return false;
 }
-export function checkAnswer() {}
+
+export function validateAnswer() {
+  // Implementation for general answer validation
+}

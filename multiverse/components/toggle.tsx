@@ -1,27 +1,32 @@
 import { useState } from "react";
 import "../style/toggle.css";
+import KeyboardEventUtils from "../utils/keyEvent.ts";
 function Toggle(props: { content: string; onToggle: Function }) {
-  let [checked, toggled] = useState(false);
-  function toggle() {
-    props.onToggle(!checked);
-    toggled(!checked);
+  let [isChecked, setCheckedState] = useState(false);
+  function handleToggle() {
+    props.onToggle(!isChecked);
+    setCheckedState(!isChecked);
   }
-  function onkeydown(ev: React.KeyboardEvent<HTMLDivElement>) {
-    if (ev.key == "Enter" && ev.ctrlKey == false && ev.altKey == false) {
-      toggle();
+  function handleKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
+    if (KeyboardEventUtils.isEnterKey(ev, true)) {
+      handleToggle();
     }
   }
   return (
-    <div className="holder" onClick={toggle} onKeyDown={onkeydown}>
+    <div
+      className="toggle-holder"
+      onClick={handleToggle}
+      onKeyDown={handleKeyDown}
+    >
       <label style={{ cursor: "pointer" }}>{props.content}</label>
-      <div className="toggle" data-checked={checked} tabIndex={0}>
+      <div className="toggle" data-checked={isChecked} tabIndex={0}>
         <input
           type="checkbox"
           id="toggle"
-          checked={checked}
+          checked={isChecked}
           style={{ display: "none" }}
         ></input>
-        <div className="weball"></div>
+        <div className="toggle-indicator"></div>
       </div>
     </div>
   );

@@ -1,16 +1,16 @@
-export default timeConvert;
+export default convertTime;
 
-function timeConvert(time_in_ms: String) {
-  let time = Number(time_in_ms);
-  function fullMinutes() {
-    return time / 1000;
+function convertTime(timeInMilliseconds: String) {
+  let timeInMs = Number(timeInMilliseconds);
+  function getMinutes() {
+    return timeInMs / 1000;
   }
-  function fullHours() {
-    return time / 60000;
+  function getHours() {
+    return timeInMs / 60000;
   }
   return {
-    time: time,
-    fullMinutes: fullMinutes,
-    fullHours: fullHours,
+    time: timeInMs,
+    fullMinutes: getMinutes,
+    fullHours: getHours,
   };
 }
