@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../style/toggle.css";
+import styles from "../style/toggle.module.css";
 import KeyboardEventUtils from "../utils/keyEvent.ts";
 function Toggle(props: { content: string; onToggle: Function }) {
   let [isChecked, setCheckedState] = useState(false);
@@ -14,19 +14,19 @@ function Toggle(props: { content: string; onToggle: Function }) {
   }
   return (
     <div
-      className="toggle-holder"
+      className={styles.toggle_holder}
       onClick={handleToggle}
       onKeyDown={handleKeyDown}
     >
       <label style={{ cursor: "pointer" }}>{props.content}</label>
-      <div className="toggle" data-checked={isChecked} tabIndex={0}>
+      <div className={styles.toggle} data-checked={isChecked} tabIndex={0}>
         <input
           type="checkbox"
           id="toggle"
           checked={isChecked}
           style={{ display: "none" }}
         ></input>
-        <div className="toggle-indicator"></div>
+        <div className={styles.toggle_indicator}></div>
       </div>
     </div>
   );

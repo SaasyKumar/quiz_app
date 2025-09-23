@@ -6,11 +6,7 @@ let KeyboardEventUtils = {
   isEnterKey: isEnterKey,
 };
 
-function checkKey(
-  event: React.KeyboardEvent,
-  key: string,
-  modifiers: boolean,
-) {
+function checkKey(event: React.KeyboardEvent, key: string, modifiers: boolean) {
   if (event.key == key) {
     if (modifiers) {
       if (

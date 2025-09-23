@@ -8,7 +8,9 @@ export function validateAnswerFromButton(
     return true;
   } else if (answerButton.id == expectedAnswer) {
     return true;
-  } else if (validAnswerOptions[Number(answerButton.id)] == expectedAnswer.toUpperCase()) {
+  } else if (
+    validAnswerOptions[Number(answerButton.id)] == expectedAnswer.toUpperCase()
+  ) {
     return true;
   }
   return false;

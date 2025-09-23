@@ -1,4 +1,4 @@
-.toggle-holder {
+.toggle_holder {
   --bg-on-select-colorcode: 124, 58, 237;
   --bg-on-select-color: rgb(var(--bg-on-select-colorcode));
   --bg-initial-colorcode: 125, 121, 132;
@@ -22,7 +22,7 @@
 .toggle[data-checked="true"] {
   background-color: var(--bg-on-select-color);
 }
-.toggle-indicator {
+.toggle_indicator {
   position: relative;
   left: 2px;
   background-color: white;
@@ -31,6 +31,6 @@
   border-radius: 100%;
   transition: left 0.3s ease;
 }
-.toggle[data-checked="true"] .toggle-indicator {
+.toggle[data-checked="true"] .toggle_indicator {
   left: 16px;
 }

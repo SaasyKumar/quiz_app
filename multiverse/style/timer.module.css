@@ -1,0 +1,13 @@
+.timer {
+  background-color: #108e47;
+  border-radius: 5px;
+  height: 30px;
+  min-width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+}
+.timer[data-ticking="true"] {
+  background-color: #b01617;
+}
