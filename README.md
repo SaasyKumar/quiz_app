@@ -6,6 +6,7 @@
 - can check answers when the answer is index with number or alphabet
 - can extract questions from AikenFormat
 - a create quiz page
+- a toggle and timer component
 
 # Do
 
@@ -13,6 +14,7 @@
 - View Score or consecutive test -> next test will only contain wrong answered
 - Do random later first right flow
 - if the options are list map it with a b c d before giving it an id , then shuffle the components
+- Add sound for timer
 
 # Learning
 
@@ -24,6 +26,7 @@
 
 * While passing objects to a react component, don't pass the whole object, pass it every key value pair mentioned in the object.
 * `rem` in CSS don't know what but in ref to root element. I think it will be used on react apps and it have mobile too. Auto?
+* CSS transitions do not work with changes in display property.
 
 # Prettier
 

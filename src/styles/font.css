@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Quizz";
+  src:
+    local("Quizz"),
+    url("./../../images/fonts/icomoon.svg") format("svg"),
+    url("./../../images/fonts/icomoon.ttf") format("truetype"),
+    url("./../../images/fonts/icomoon.woff") format("woff");
+}

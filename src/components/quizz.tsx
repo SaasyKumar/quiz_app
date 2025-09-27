@@ -39,6 +39,7 @@ function Quizz(props: {
                 ? Number(props.Time)
                 : questions.length * (props.TimePerQuestion || 10)
             }
+            pauseEnabled={true}
           />
         </div>
         <Question
