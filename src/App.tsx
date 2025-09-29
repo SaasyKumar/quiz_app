@@ -11,7 +11,7 @@ function App() {
   let [data, setData] = useState<{
     Questions: any[];
     Title: string;
-    Time: string;
+    Time?: string; // Make Time optional
   }>({ Questions: [], Title: "", Time: "" });
   let [showMainUI, setMainUIvisibiliaty] = useState(true);
   let [mountQuizComp, setQuizCompMountState] = useState(false);

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Toggle from "../../multiverse/components/toggle.tsx";
 import Timer from "../../multiverse/components/timer.tsx";
 import Question from "./question.tsx";
+import style from "./../styles/quizz.module.css";
 
 function Quizz(props: {
   Questions: Array<any>;
@@ -46,22 +47,25 @@ function Quizz(props: {
           Question={currentQn.Question}
           Options={currentQn.Options}
           Answer={currentQn.Answer}
+          QuestionId={currentQn.QuestionID}
         ></Question>
         <br></br>
-        <button
-          className="primarybtn"
-          onClick={movePreviousQn}
-          disabled={currentIndex === 0}
-        >
-          Previous
-        </button>
-        <button
-          className="primarybtn"
-          onClick={moveNextQn}
-          disabled={currentIndex === questions.length - 1}
-        >
-          Next
-        </button>
+        <div className={style.actions}>
+          <button
+            className={"primarybtn "+style.previous}
+            onClick={movePreviousQn}
+            disabled={currentIndex === 0}
+          >
+            Previous
+          </button>
+          <button
+            className={"primarybtn "+style.next}
+            onClick={moveNextQn}
+            disabled={currentIndex === questions.length - 1}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </>
   );

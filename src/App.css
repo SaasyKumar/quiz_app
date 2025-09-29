@@ -42,6 +42,10 @@
   background-color: var(--quizz-primary-hover-color);
   border: none;
 }
+.primarybtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 .mainmenubtn {
   display: block;
   width: 100%;
