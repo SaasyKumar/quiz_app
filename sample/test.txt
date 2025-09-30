@@ -4,6 +4,7 @@ b) To provide hot-reloading during development
 c) To minify code for production
 d) To manage plugins
 Answer: b) To provide hot-reloading during development
+Explanation: mazhu matta
 
 2. Which bundlers does Vite use internally?
 a) Webpack and Babel

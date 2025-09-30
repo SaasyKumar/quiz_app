@@ -2,14 +2,14 @@ export function validateAnswerFromButton(
   answerButton: HTMLButtonElement,
   expectedAnswer: string,
 ) {
-  console.log(answerButton.id);
   let validAnswerOptions = ["A", "B", "C", "D", "E", "F", "G"];
+  let answerID = answerButton.id.split("_")[1];
   if (answerButton.textContent == expectedAnswer) {
     return true;
-  } else if (answerButton.id == expectedAnswer) {
+  } else if (answerID == expectedAnswer) {
     return true;
   } else if (
-    validAnswerOptions[Number(answerButton.id)] == expectedAnswer.toUpperCase()
+    validAnswerOptions[Number(answerID)] == expectedAnswer.toUpperCase()
   ) {
     return true;
   }

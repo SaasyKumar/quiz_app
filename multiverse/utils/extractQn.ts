@@ -1,31 +1,37 @@
 export function extractFromAikenFormat(data: string) {
   const blocks = data.trim().split(/\n\s*\n/);
-
+  let QuestionID = 1;
   const result = blocks.map((block) => {
     const lines = block.trim().split(/\r?\n/);
 
-    const question = lines[0].replace(/^\d+[\)\.]\s*/, "").trim();
+    const Question = lines[0].replace(/^\d+[\)\.]\s*/, "").trim();
 
     const optionPattern = /^([a-zA-Z])[\)\.]\s+(.+)/;
-    const answerOptions: Record<string, string> = {};
+    const Options: Record<string, string> = {};
 
-    let correctAnswer = "";
-
+    let Answer = "";
+    let explanation = "";
     for (const line of lines.slice(1)) {
       const optionMatch = line.match(optionPattern);
       if (optionMatch) {
-        answerOptions[optionMatch[1].toLowerCase()] = optionMatch[2].trim();
+        Options[optionMatch[1].toLowerCase()] = optionMatch[2].trim();
       }
 
       if (line.startsWith("Answer:")) {
         const answerMatch = line.match(/Answer:\s*([a-zA-Z])/i);
         if (answerMatch) {
-          correctAnswer = answerMatch[1].toLowerCase();
+          Answer = answerMatch[1].toLowerCase();
+        }
+      }
+      if( line.startsWith("Explanation:") ){
+        const explanationMatch = line.match(/Explanation:\s*(.+)/i);
+        if( explanationMatch ){
+          explanation = explanationMatch[1];
         }
       }
     }
-
-    return { question, answerOptions, correctAnswer };
+    QuestionID++;
+    return { QuestionID,Question, Options, Answer, explanation };
   });
 
   return result;
