@@ -40,6 +40,6 @@
   content: "\ea1c";
 }
 .timer[data-ticking="true"] {
-  background-color: #E5E7EB;
+  background-color: #e5e7eb;
   color: black;
 }

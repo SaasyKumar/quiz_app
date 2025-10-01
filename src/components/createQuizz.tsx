@@ -5,33 +5,39 @@ import styles from "../styles/createQuizz.module.css";
 import Quizz from "./../components/quizz.tsx";
 
 function CreateQuizz() {
-  let [inputdata, setInputData] = useState("");
+  let [inputData, setInputData] = useState("");
   let [mountQuizComp, setQuizCompMountState] = useState(false);
-  let [quizData, setData] = useState<QuizData>({ Questions: [], Title: "", Time: "0" });
-  function setInput(ev: ChangeEvent<HTMLTextAreaElement>) {
-    setInputData(ev.target.value);
-  }
+  let [quizData, setData] = useState<QuizData>({
+    DataSet: [],
+    quizTitle: "",
+    Time: "0",
+  });
   interface QuizData {
-    Questions: { question: string; answerOptions: Record<string, string>; correctAnswer: string; explanation: string; }[];
-    Title: string;
+    DataSet: {
+      Question: string;
+      Options: Record<string, string>;
+      Answer: string;
+      explanation: string;
+    }[];
+    quizTitle: string;
     Time: string;
   }
-  
+  // load using paste option
   function loadData() {
-    let extractedData = extractFromAikenFormat(inputdata as string);
+    let extractedData = extractFromAikenFormat(inputData as string);
     setData({
-      Questions: extractedData,
-      Title: "Your Quiz Title", // Set a default title or modify as needed
-      Time: "30" // Set a default time or modify as needed
+      DataSet: extractedData,
+      quizTitle: "Your Quiz Title", // Set a default title or modify as needed
+      Time: "30", // Set a default time or modify as needed
     });
     setQuizCompMountState(true);
   }
-  return (
-    <>
-    {mountQuizComp ? (
-        <Quizz Questions={quizData.Questions} Title={quizData.Title} Time={quizData.Time} />
-      ) : 
-      <div className={styles.inputsdiv}>
+  function setInput(ev: ChangeEvent<HTMLTextAreaElement>) {
+    console.log(ev.target);
+    setInputData(ev.target.value);
+  }
+  let pasteInputDiv = (
+    <div className={styles.inputsdiv}>
       <div className={styles.pasteinput}>
         <textarea placeholder="Paste data here" onChange={setInput} />
         <div className={styles.load_data}>
@@ -40,7 +46,20 @@ function CreateQuizz() {
           </button>
         </div>
       </div>
-    </div>}
+    </div>
+  );
+
+  return (
+    <>
+      {mountQuizComp ? (
+        <Quizz
+          DataSet={quizData.DataSet}
+          quizTitle={quizData.quizTitle}
+          quizTotalTime={quizData.Time}
+        />
+      ) : (
+        pasteInputDiv
+      )}
     </>
   );
 }

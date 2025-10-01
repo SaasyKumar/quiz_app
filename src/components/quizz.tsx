@@ -1,70 +1,87 @@
 import { useState } from "react";
 import Toggle from "../../multiverse/components/toggle.tsx";
 import Timer from "../../multiverse/components/timer.tsx";
+import {getAnswerID} from "../../multiverse/utils/checkAnswer.ts"
 import Question from "./question.tsx";
 import style from "./../styles/quizz.module.css";
 
 function Quizz(props: {
-  Questions: Array<any>;
-  Title?: string | "";
-  Time?: string | "";
+  DataSet: Array<any>;
+  quizTitle?: string | "";
+  quizTotalTime?: string | "";
   TimePerQuestion?: number | 10;
 }) {
-  let title = props.Title;
-  let questions = props.Questions;
-  let [currentIndex, setCurrentIndex] = useState(0);
-  let [currentQn, setCurrentQn] = useState(questions[currentIndex]);
+  let dataSet = props.DataSet;
+  let optionsSelected = {};
+  let result = {};
+  let [currentDataIndex, setCurrentDataIndex] = useState(0);
+  let [currentQn, setCurrentQn] = useState(dataSet[currentDataIndex]);
+  // Next and Previous button functions
   function moveNextQn() {
-    setCurrentIndex(++currentIndex);
-    setCurrentQn(questions[currentIndex]);
+    setCurrentDataIndex(++currentDataIndex);
+    setCurrentQn(dataSet[currentDataIndex]);
   }
   function movePreviousQn() {
-    setCurrentIndex(--currentIndex);
-    setCurrentQn(questions[currentIndex]);
+    setCurrentDataIndex(--currentDataIndex);
+    setCurrentQn(dataSet[currentDataIndex]);
   }
+  let previousButton = (
+    <button
+      className={"primarybtn " + style.previous}
+      onClick={movePreviousQn}
+      disabled={currentDataIndex === 0}
+    >
+      Previous
+    </button>
+  );
+  let nextButton = (
+    <button className={"primarybtn " + style.next} onClick={moveNextQn}>
+      Next
+    </button>
+  );
+  let submitButton = (
+    <button
+      className={"primarybtn " + style.next}
+      onClick={() => {
+        console.log("submit");
+      }}
+    >
+      Submit
+    </button>
+  );
+  // End
   function onShowAnswerToggle(value: boolean) {
     console.log(value);
   }
+  let quizTimer = (
+    <div className="timer">
+      <Timer
+        timeInSeconds={
+          props.quizTotalTime
+            ? Number(props.quizTotalTime)
+            : dataSet.length * (props.TimePerQuestion || 10)
+        }
+        pauseEnabled={true}
+      />
+    </div>
+  );
   return (
     <>
-      <div className="questions_div">
+      <div className="dataSet_div">
         <div className="show_score">
           <Toggle content="Show Answer" onToggle={onShowAnswerToggle}></Toggle>
         </div>
-        <h1>{title}</h1>
-        <br></br>
-        <div className="timer">
-          <Timer
-            timeInSeconds={
-              props.Time
-                ? Number(props.Time)
-                : questions.length * (props.TimePerQuestion || 10)
-            }
-            pauseEnabled={true}
-          />
-        </div>
+        <h1>{props.quizTitle}</h1>
+        {quizTimer}
         <Question
           Question={currentQn.Question}
           Options={currentQn.Options}
-          Answer={currentQn.Answer}
-          QuestionId={currentQn.QuestionID}
+          AnswerId={getAnswerID(currentQn.Options,currentQn.Answer)}
+          QuestionId={(dataSet.indexOf(currentQn) + 1).toString()}
         ></Question>
-        <br></br>
         <div className={style.actions}>
-          <button
-            className={"primarybtn "+style.previous}
-            onClick={movePreviousQn}
-            disabled={currentIndex === 0}
-          >
-            Previous
-          </button>
-          <button
-            className={"primarybtn "+style.next}
-            onClick={moveNextQn}
-            disabled={currentIndex === questions.length - 1}
-          >
-            Next
-          </button>
+          {previousButton}
+          {currentDataIndex === dataSet.length - 1 ? submitButton : nextButton}
         </div>
       </div>
     </>

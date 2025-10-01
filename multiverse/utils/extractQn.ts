@@ -23,15 +23,15 @@ export function extractFromAikenFormat(data: string) {
           Answer = answerMatch[1].toLowerCase();
         }
       }
-      if( line.startsWith("Explanation:") ){
+      if (line.startsWith("Explanation:")) {
         const explanationMatch = line.match(/Explanation:\s*(.+)/i);
-        if( explanationMatch ){
+        if (explanationMatch) {
           explanation = explanationMatch[1];
         }
       }
     }
     QuestionID++;
-    return { QuestionID,Question, Options, Answer, explanation };
+    return { QuestionID, Question, Options, Answer, explanation };
   });
 
   return result;

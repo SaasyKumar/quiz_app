@@ -43,7 +43,13 @@ function App() {
     setCreateCompoState(true);
   }
   function loadSampleData() {
-    setData(sample_data2 as { Questions: any[]; Title: string; Time: string });
+    setData(
+      sample_data2 as {
+        Questions: any[];
+        quizTitle: string;
+        quizTotalTime: string;
+      }
+    );
     setMainUIvisibiliaty(false);
     setQuizCompMountState(true);
     setCreateCompoState(false);
@@ -52,7 +58,11 @@ function App() {
     <>
       {showMainUI ? MainUI : null}
       {mountQuizComp ? (
-        <Quizz Questions={data.Questions} Title={data.Title} Time={data.Time} />
+        <Quizz
+          DataSet={data.Questions}
+          quizTitle={data.Title}
+          quizTotalTime={data.Time}
+        />
       ) : null}
       {mountCreateComp ? <CreateQuizz /> : null}
     </>

@@ -14,10 +14,10 @@
 - If show score at last use use radio button else use normal button
 - View Score or consecutive test -> next test will only contain wrong answered
 - Do random later first right flow
-- if the options are list map it with a b c d before giving it an id , then shuffle the components
 - Add sound for timer
-- blue/green hues improve recall, while red increases attention but not memory.
 - A start quizz maybe and in that we can choose show answer at last or not.
+- a resizer
+-
 
 # Learning
 
@@ -31,6 +31,24 @@
 * `rem` in CSS don't know what but in ref to root element. I think it will be used on react apps and it have mobile too. Auto?
 * CSS transitions do not work with changes in display property.
 * justify-content: space-between;
+
+# Color
+
+- blue/green hues improve recall, while red increases attention but not memory.
+
+# for flow Diagram
+
+- https://tree-tool.netlify.app/
+  ![alt text](image.png)
+
+# For Development
+
+- The question Id should not be stored, I should be generated on app load starting from `1`. or just index+1.
+- The option Id is `QuestionID`+"\_"+`option_label`
+- The option label should be again created on app load and always upper case alphabet starting from `A`.
+- The question Ids and option should be maintained within the quizz component
+- The Questions component should only check the answer is right or not and either show answer or return the option selected to parent and mark it.
+- the options standard method should be set where key is options label and value is the string that contain it.
 
 # Prettier
 
