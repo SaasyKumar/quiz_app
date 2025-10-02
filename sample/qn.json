@@ -12,7 +12,12 @@
     },
     {
       "Question": "Capital of TamilNadu",
-      "Options": {"A":"Madurai", "B":"Chennai", "C":"Trichy", "D":"Erode"},
+      "Options": {
+        "A": "Madurai",
+        "B": "Chennai",
+        "C": "Trichy",
+        "D": "Erode"
+      },
       "type": "MCQ",
       "Answer": "Chennai",
       "Difficulty": "1",

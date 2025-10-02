@@ -8,6 +8,7 @@
 - a create quiz page
 - a toggle and timer component
 - Actually working one will start using this and build more on it
+- show right answer when you select wrong answer
 
 # Do
 
@@ -17,7 +18,9 @@
 - Add sound for timer
 - A start quizz maybe and in that we can choose show answer at last or not.
 - a resizer
--
+- quiz title and time
+- a score board
+- a UI that show all user selected option and whether it is right or not.
 
 # Learning
 
@@ -31,6 +34,14 @@
 * `rem` in CSS don't know what but in ref to root element. I think it will be used on react apps and it have mobile too. Auto?
 * CSS transitions do not work with changes in display property.
 * justify-content: space-between;
+* for empty declarations
+
+```ts
+let answerSet: Record<string, string> = {};
+```
+
+- `useMemo` and `useEffect` hook
+- No comments should be at production but in code needed. can't trace the format anytime
 
 # Color
 
@@ -43,7 +54,7 @@
 
 # For Development
 
-- The question Id should not be stored, I should be generated on app load starting from `1`. or just index+1.
+- The question Id should not be stored, I should be generated on app load starting from `0`. or just index+1.
 - The option Id is `QuestionID`+"\_"+`option_label`
 - The option label should be again created on app load and always upper case alphabet starting from `A`.
 - The question Ids and option should be maintained within the quizz component

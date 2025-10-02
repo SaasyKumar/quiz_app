@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Toggle from "../../multiverse/components/toggle.tsx";
 import Timer from "../../multiverse/components/timer.tsx";
-import {getAnswerID} from "../../multiverse/utils/checkAnswer.ts"
+import { getAnswerID } from "../../multiverse/utils/checkAnswer.ts";
 import Question from "./question.tsx";
 import style from "./../styles/quizz.module.css";
 
@@ -11,11 +11,39 @@ function Quizz(props: {
   quizTotalTime?: string | "";
   TimePerQuestion?: number | 10;
 }) {
-  let dataSet = props.DataSet;
-  let optionsSelected = {};
-  let result = {};
+  let [recDataSet, updateRecData] = useState<string[]>([]);
+  let [resetFlag, setDataRest] = useState(false);
+  let [dataSet, updateDateSet] = useState(props.DataSet);
+  const answerSet = useMemo(() => {
+    let set: Record<string, string> = {};
+    for (let i in dataSet) {
+      set[i] = getAnswerID(dataSet[i].Options, dataSet[i].Answer);
+    }
+    return set;
+  }, [dataSet]);
+  let optionsSelected = useMemo(() => {
+    let set: Record<string, string> = {};
+    return set;
+  }, [dataSet]);
+  let [score, setScore] = useState(0);
+  let [showScore, showScoreUI] = useState(false); //FIXME: rename
+
   let [currentDataIndex, setCurrentDataIndex] = useState(0);
   let [currentQn, setCurrentQn] = useState(dataSet[currentDataIndex]);
+  function resetData() {
+    setCurrentDataIndex(0);
+    setCurrentQn(dataSet[0]);
+    showScoreUI(false);
+  }
+  if (resetFlag) {
+    resetData();
+    setDataRest(false);
+  }
+  function onOptionSelect(optionID: string) {
+    let questionID = optionID.split("_")[0];
+    let selectedID = optionID.split("_")[1];
+    optionsSelected[questionID] = selectedID;
+  }
   // Next and Previous button functions
   function moveNextQn() {
     setCurrentDataIndex(++currentDataIndex);
@@ -24,6 +52,19 @@ function Quizz(props: {
   function movePreviousQn() {
     setCurrentDataIndex(--currentDataIndex);
     setCurrentQn(dataSet[currentDataIndex]);
+  }
+  function submitAnswers() {
+    let rec: Array<any> = [];
+    for (let optionSelected in optionsSelected) {
+      if (optionsSelected[optionSelected] == answerSet[optionSelected]) {
+        // {0: 'A', 1: 'C'} eq with {0: 'A', 1: 'B'}
+        setScore(++score);
+      } else {
+        rec.push(dataSet[Number(optionSelected)]);
+      }
+    }
+    updateRecData(rec);
+    showScoreUI(true);
   }
   let previousButton = (
     <button
@@ -40,12 +81,7 @@ function Quizz(props: {
     </button>
   );
   let submitButton = (
-    <button
-      className={"primarybtn " + style.next}
-      onClick={() => {
-        console.log("submit");
-      }}
-    >
+    <button className={"primarybtn " + style.next} onClick={submitAnswers}>
       Submit
     </button>
   );
@@ -65,8 +101,22 @@ function Quizz(props: {
       />
     </div>
   );
+  //Score
+  let scoreUI = (
+    <div className={style.scoreui}>
+      {score}/{dataSet.length}
+      <button className={"primarybtn " + style.next} onClick={recursiveTest}>
+        Recursive Test
+      </button>
+    </div>
+  );
+  function recursiveTest() {
+    updateDateSet(recDataSet);
+    setDataRest(true);
+  }
   return (
     <>
+      {showScore && scoreUI}
       <div className="dataSet_div">
         <div className="show_score">
           <Toggle content="Show Answer" onToggle={onShowAnswerToggle}></Toggle>
@@ -76,8 +126,9 @@ function Quizz(props: {
         <Question
           Question={currentQn.Question}
           Options={currentQn.Options}
-          AnswerId={getAnswerID(currentQn.Options,currentQn.Answer)}
-          QuestionId={(dataSet.indexOf(currentQn) + 1).toString()}
+          AnswerId={answerSet[currentDataIndex.toString()]}
+          QuestionId={currentDataIndex.toString()}
+          onOptionSelect={onOptionSelect}
         ></Question>
         <div className={style.actions}>
           {previousButton}

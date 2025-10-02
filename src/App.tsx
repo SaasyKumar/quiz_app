@@ -48,7 +48,7 @@ function App() {
         Questions: any[];
         quizTitle: string;
         quizTotalTime: string;
-      }
+      },
     );
     setMainUIvisibiliaty(false);
     setQuizCompMountState(true);
