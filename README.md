@@ -9,6 +9,7 @@
 - a toggle and timer component
 - Actually working one will start using this and build more on it
 - show right answer when you select wrong answer
+- score board and recursive quizz
 
 # Do
 
@@ -19,8 +20,9 @@
 - A start quizz maybe and in that we can choose show answer at last or not.
 - a resizer
 - quiz title and time
-- a score board
 - a UI that show all user selected option and whether it is right or not.
+- a file upload and store it in top
+- long term or short term memory toggle
 
 # Learning
 
@@ -68,6 +70,9 @@ let answerSet: Record<string, string> = {};
 # Name
 
 - FOMizz - Fear of Missing Out
+- maze
+- 
+- create bank instead of vault
 
 # icons
 

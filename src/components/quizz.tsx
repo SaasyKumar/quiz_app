@@ -11,9 +11,16 @@ function Quizz(props: {
   quizTotalTime?: string | "";
   TimePerQuestion?: number | 10;
 }) {
+  let [dataSet, updateDateSet] = useState(props.DataSet);
+  let [currentDataIndex, setCurrentDataIndex] = useState(0);
+  let [currentQn, setCurrentQn] = useState(dataSet[currentDataIndex]);
+
+  let [score, setScore] = useState(0);
+  let [showScore, showScoreUI] = useState(false); //FIXME: rename
   let [recDataSet, updateRecData] = useState<string[]>([]);
   let [resetFlag, setDataRest] = useState(false);
-  let [dataSet, updateDateSet] = useState(props.DataSet);
+
+
   const answerSet = useMemo(() => {
     let set: Record<string, string> = {};
     for (let i in dataSet) {
@@ -25,15 +32,12 @@ function Quizz(props: {
     let set: Record<string, string> = {};
     return set;
   }, [dataSet]);
-  let [score, setScore] = useState(0);
-  let [showScore, showScoreUI] = useState(false); //FIXME: rename
 
-  let [currentDataIndex, setCurrentDataIndex] = useState(0);
-  let [currentQn, setCurrentQn] = useState(dataSet[currentDataIndex]);
   function resetData() {
     setCurrentDataIndex(0);
     setCurrentQn(dataSet[0]);
     showScoreUI(false);
+    setScore(0);
   }
   if (resetFlag) {
     resetData();
@@ -86,9 +90,6 @@ function Quizz(props: {
     </button>
   );
   // End
-  function onShowAnswerToggle(value: boolean) {
-    console.log(value);
-  }
   let quizTimer = (
     <div className="timer">
       <Timer
@@ -118,9 +119,6 @@ function Quizz(props: {
     <>
       {showScore && scoreUI}
       <div className="dataSet_div">
-        <div className="show_score">
-          <Toggle content="Show Answer" onToggle={onShowAnswerToggle}></Toggle>
-        </div>
         <h1>{props.quizTitle}</h1>
         {quizTimer}
         <Question
