@@ -10,17 +10,18 @@
 - Actually working one will start using this and build more on it
 - show right answer when you select wrong answer
 - score board and recursive quizz
+- result board
+- a UI that show all user selected option and whether it is right or not.
+- View Score or consecutive test -> next test will only contain wrong answered
 
 # Do
 
 - If show score at last use use radio button else use normal button
-- View Score or consecutive test -> next test will only contain wrong answered
 - Do random later first right flow
 - Add sound for timer
 - A start quizz maybe and in that we can choose show answer at last or not.
 - a resizer
 - quiz title and time
-- a UI that show all user selected option and whether it is right or not.
 - a file upload and store it in top
 - long term or short term memory toggle
 
@@ -49,20 +50,6 @@ let answerSet: Record<string, string> = {};
 
 - blue/green hues improve recall, while red increases attention but not memory.
 
-# for flow Diagram
-
-- https://tree-tool.netlify.app/
-  ![alt text](image.png)
-
-# For Development
-
-- The question Id should not be stored, I should be generated on app load starting from `0`. or just index+1.
-- The option Id is `QuestionID`+"\_"+`option_label`
-- The option label should be again created on app load and always upper case alphabet starting from `A`.
-- The question Ids and option should be maintained within the quizz component
-- The Questions component should only check the answer is right or not and either show answer or return the option selected to parent and mark it.
-- the options standard method should be set where key is options label and value is the string that contain it.
-
 # Prettier
 
 - run `npx prettier . --write` before commit. other prettier hooks interrupt while writing code.
@@ -71,7 +58,7 @@ let answerSet: Record<string, string> = {};
 
 - FOMizz - Fear of Missing Out
 - maze
-- 
+-
 - create bank instead of vault
 
 # icons

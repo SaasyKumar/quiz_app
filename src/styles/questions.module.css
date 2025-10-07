@@ -28,11 +28,22 @@
   outline: none;
   border: 2px solid rgb(168, 85, 247);
 }
-.options[data-correct="true"] {
+.options[disabled],
+.options[disabled]:hover,
+.options[disabled]:focus {
+  cursor: text;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  background-color: #1a1a1a;
+}
+.options[data-selected="true"][data-correct="true"] {
   background-color: #22c55e;
   border: 2px solid #22c55e;
 }
-.options[data-correct="false"] {
+.options[data-selected="true"][data-correct="false"] {
   background-color: #ef4444;
   border: 2px solid #ef4444;
+}
+.options[data-selected="true"] {
+  background-color: rgb(75, 29, 149);
+  border: 2px solid rgb(75, 29, 149);
 }

@@ -6,11 +6,15 @@ function Question(props: {
   AnswerId: string;
   QuestionId: string;
   onOptionSelect?: Function;
+  showResultAfterSubmit?: boolean;
+  optionSelected?: string;
+  showResult?: boolean | false;
 }) {
   let optionsComps = [];
   let answerLabel = ["A", "B", "C", "D", "E", "F"];
   let options_list = props.Options;
   let [isAnswerSelected, answerSelected] = useState(false);
+  let previouslySelectedOption = props.optionSelected || "";
   useEffect(() => {
     answerSelected(false);
     let btns = document.querySelectorAll(
@@ -18,34 +22,61 @@ function Question(props: {
     );
     btns.forEach((btn) => {
       (btn as HTMLButtonElement).removeAttribute("data-correct");
+      if ((btn as HTMLButtonElement).id !== props.optionSelected) {
+        (btn as HTMLButtonElement).removeAttribute("data-selected");
+      } else {
+        (btn as HTMLButtonElement).setAttribute("data-selected", "true");
+        if (props.showResult === true) {
+          if ((btn as HTMLButtonElement).id === props.AnswerId) {
+            (btn as HTMLButtonElement).setAttribute("data-correct", "true");
+          } else {
+            (btn as HTMLButtonElement).setAttribute("data-correct", "false");
+            document
+              .querySelector("button[id='" + props.AnswerId + "']")
+              ?.setAttribute("data-correct", "true");
+            document
+              .querySelector("button[id='" + props.AnswerId + "']")
+              ?.setAttribute("data-selected", "true");
+          }
+        }
+      }
     });
   }, [props.QuestionId]);
   function onOptionClick(ev: React.MouseEvent<HTMLButtonElement>) {
+    if (previouslySelectedOption) {
+      document
+        .querySelector("button[id='" + previouslySelectedOption + "']")
+        ?.removeAttribute("data-selected");
+    }
     if (isAnswerSelected != true) {
-      let correctOptionId = props.QuestionId + "_" + props.AnswerId;
-      if (ev.target.id && ev.target.id == correctOptionId) {
-        (ev.target as HTMLButtonElement).setAttribute("data-correct", "true");
-        answerSelected(true);
-      } else {
-        (ev.target as HTMLButtonElement).setAttribute("data-correct", "false");
-        answerSelected(true);
-        document
-          .querySelector("button[id='" + correctOptionId + "']")
-          ?.setAttribute("data-correct", "true");
+      let correctOptionId = props.AnswerId;
+      const target = ev.target as HTMLButtonElement;
+      if (props.showResultAfterSubmit === false) {
+        if (target.id && target.id == correctOptionId) {
+          (ev.target as HTMLButtonElement).setAttribute("data-correct", "true");
+          answerSelected(true);
+        } else {
+          (ev.target as HTMLButtonElement).setAttribute(
+            "data-correct",
+            "false",
+          );
+          answerSelected(true);
+          document
+            .querySelector("button[id='" + correctOptionId + "']")
+            ?.setAttribute("data-correct", "true");
+        }
       }
-      props.onOptionSelect && props.onOptionSelect(ev.target.id);
-      // if (
-      //   validateAnswerFromButton(ev.target as HTMLButtonElement, props.Answer)
-      // ) {
-      // } else {
-      // }
+      (ev.target as HTMLButtonElement).setAttribute("data-selected", "true");
+      previouslySelectedOption = target.id;
+      props.onOptionSelect && props.onOptionSelect(target.id);
     }
   }
   function generateOptionButton(option_id: string, innerText: string) {
     return (
       <button
         className={styles.options}
-        onClick={onOptionClick}
+        onClick={props.showResult ? () => {} : onOptionClick}
+        disabled={props.showResult ? true : undefined}
         id={option_id}
         tabIndex={0}
       >
@@ -55,14 +86,14 @@ function Question(props: {
   }
   for (let i in options_list) {
     let innerText = options_list[i];
-    let answerID;
+    let answerLabelID;
     if (answerLabel[i]) {
-      answerID = answerLabel[i];
+      answerLabelID = answerLabel[i];
     } else {
-      answerID = i.toUpperCase();
+      answerLabelID = i.toUpperCase();
     }
     optionsComps.push(
-      generateOptionButton(props.QuestionId + "_" + answerID, innerText),
+      generateOptionButton(props.QuestionId + "_" + answerLabelID, innerText),
     );
   }
   return (

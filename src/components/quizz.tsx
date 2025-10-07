@@ -4,22 +4,28 @@ import Timer from "../../multiverse/components/timer.tsx";
 import { getAnswerID } from "../../multiverse/utils/checkAnswer.ts";
 import Question from "./question.tsx";
 import style from "./../styles/quizz.module.css";
-
+import Result from "./result.tsx";
+import { Setting } from "./../settings.ts";
 function Quizz(props: {
   DataSet: Array<any>;
   quizTitle?: string | "";
   quizTotalTime?: string | "";
-  TimePerQuestion?: number | 10;
+  TimePerQuestion?: number;
 }) {
   let [dataSet, updateDateSet] = useState(props.DataSet);
   let [currentDataIndex, setCurrentDataIndex] = useState(0);
+  let [timer, setTimer] = useState(
+    props.quizTotalTime
+      ? Number(props.quizTotalTime)
+      : dataSet.length * (props.TimePerQuestion || 20),
+  );
   let [currentQn, setCurrentQn] = useState(dataSet[currentDataIndex]);
 
   let [score, setScore] = useState(0);
   let [showScore, showScoreUI] = useState(false); //FIXME: rename
+  let [showFinalResult, setResult] = useState(false);
   let [recDataSet, updateRecData] = useState<string[]>([]);
   let [resetFlag, setDataRest] = useState(false);
-
 
   const answerSet = useMemo(() => {
     let set: Record<string, string> = {};
@@ -38,6 +44,7 @@ function Quizz(props: {
     setCurrentQn(dataSet[0]);
     showScoreUI(false);
     setScore(0);
+    setTimer(dataSet.length * 20);
   }
   if (resetFlag) {
     resetData();
@@ -92,28 +99,39 @@ function Quizz(props: {
   // End
   let quizTimer = (
     <div className="timer">
-      <Timer
-        timeInSeconds={
-          props.quizTotalTime
-            ? Number(props.quizTotalTime)
-            : dataSet.length * (props.TimePerQuestion || 10)
-        }
-        pauseEnabled={true}
-      />
+      <Timer timeInSeconds={timer} pauseEnabled={true} />
     </div>
   );
   //Score
   let scoreUI = (
-    <div className={style.scoreui}>
-      {score}/{dataSet.length}
-      <button className={"primarybtn " + style.next} onClick={recursiveTest}>
-        Recursive Test
-      </button>
+    <div className={style.scoreoverlay}>
+      <div className={style.scorediv}>
+        <div className={style.scoretext}>
+          {score}/{dataSet.length}
+        </div>
+        <button className={"primarybtn " + style.next} onClick={recursiveTest}>
+          Recursive Test
+        </button>
+        {showFinalResult ? (
+          <Result
+            dataSet={dataSet}
+            answerSet={answerSet}
+            optionsSelected={optionsSelected}
+          ></Result>
+        ) : (
+          <button className={"primarybtn " + style.next} onClick={showResult}>
+            Show Result
+          </button>
+        )}
+      </div>
     </div>
   );
   function recursiveTest() {
     updateDateSet(recDataSet);
     setDataRest(true);
+  }
+  function showResult() {
+    setResult(true);
   }
   return (
     <>
@@ -124,9 +142,19 @@ function Quizz(props: {
         <Question
           Question={currentQn.Question}
           Options={currentQn.Options}
-          AnswerId={answerSet[currentDataIndex.toString()]}
+          AnswerId={
+            currentDataIndex.toString() +
+            "_" +
+            answerSet[currentDataIndex.toString()]
+          }
           QuestionId={currentDataIndex.toString()}
           onOptionSelect={onOptionSelect}
+          showResultAfterSubmit={Setting.showResultAfterSubmit}
+          optionSelected={
+            currentDataIndex.toString() +
+            "_" +
+            optionsSelected[currentDataIndex.toString()]
+          }
         ></Question>
         <div className={style.actions}>
           {previousButton}
