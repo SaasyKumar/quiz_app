@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Quizz from "./components/quizz";
-import CreateQuizz from "./components/createQuizz";
-import "./App.css";
-import "./styles/themecolor.css";
-import "./styles/font.css";
-import sample_data from "./../sample/vite.json";
-import sample_data2 from "./../sample/qn.json";
+import Quizz from "./quizz";
+import CreateQuizz from "./createQuizz";
+import "../styles/App.css";
+import "../styles/themecolor.css";
+import "../styles/font.css";
+import sample_data from "./../../sample/vite.json";
+import sample_data2 from "./../../sample/qn.json";
 
 function App() {
   let [data, setData] = useState<{

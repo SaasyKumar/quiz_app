@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { ChangeEvent } from "react";
-import { extractFromAikenFormat } from "../../multiverse/utils/extractQn.ts";
+import { extractFromAikenFormat } from "../utils/extractQn.ts";
 import styles from "../styles/createQuizz.module.css";
 import Quizz from "./../components/quizz.tsx";
 

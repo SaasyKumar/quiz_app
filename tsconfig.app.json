@@ -23,5 +23,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "multiverse/utils", "multiverse/components/toggle.tsx"]
+  "include": [
+    "src",
+    "src/utils",
+    "src/components/multiverse/components/toggle.tsx"
+  ]
 }

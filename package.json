@@ -3,19 +3,22 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "main.ts",
+  "main": "src/main.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "electron ."
+    "start": "electron .",
+    "prettyit": "prettier . --write"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
+    "chalk": "^5.6.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tailwindcss": "^4.1.10"
+    "tailwindcss": "^4.1.10",
+    "timerkit": "^1.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

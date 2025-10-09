@@ -1,11 +1,10 @@
 import { useState, useMemo } from "react";
-import Toggle from "../../multiverse/components/toggle.tsx";
-import Timer from "../../multiverse/components/timer.tsx";
-import { getAnswerID } from "../../multiverse/utils/checkAnswer.ts";
+import { Timer } from "timerkit";
+import { getAnswerID } from "../utils/checkAnswer.ts";
 import Question from "./question.tsx";
 import style from "./../styles/quizz.module.css";
 import Result from "./result.tsx";
-import { Setting } from "./../settings.ts";
+import { Setting } from "../config/settings.ts";
 function Quizz(props: {
   DataSet: Array<any>;
   quizTitle?: string | "";

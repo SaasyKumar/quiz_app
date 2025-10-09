@@ -52,7 +52,7 @@ let answerSet: Record<string, string> = {};
 
 # Prettier
 
-- run `npx prettier . --write` before commit. other prettier hooks interrupt while writing code.
+- run `npx prettier . --write` before commit. other prettier hooks interrupt while writing code. or add in package.json script
 
 # Name
 
@@ -66,6 +66,25 @@ let answerSet: Record<string, string> = {};
 - crushed paper and neuron links on the crushed edges
 - rubik cubes
 
-# Multiverse
+# Learning
 
-- Contains component that can be used in other websites too
+1. If **input component** is needed, it should have a input and label.
+   - So that it will be automatically support a11y
+   - clicking on any part of label will trigger that
+   - importantly while using forms it will be useful
+   - reworking toggle util.
+2. Use checked attribute selector when the state is just one rather than string concat to add class.
+3. using modules so that components class name don't collide with parent. So write class name with `_` separate not `-`.
+
+# Vocabulary
+
+1. Set1
+   - handle
+   - Util
+   - set
+   - reset
+2. Set 2
+   - is -> when boolean
+   - **Validate**
+
+- use camel case instead of `timeInMilliseconds` instead of `time_in_`
