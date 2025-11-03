@@ -1,6 +1,5 @@
 # Quiz App <img src="https://img.shields.io/badge/Development%20Phase-8A2BE2">
 - This app is still in development phase. Working in logis rather than styles
-<br>
 ![demo gif](images/demo.gif)
 
 # Did
