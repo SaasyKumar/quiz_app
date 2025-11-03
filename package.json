@@ -18,7 +18,8 @@
     "key-event-utils": "^1.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tailwindcss": "^4.1.10"
+    "tailwindcss": "^4.1.10",
+    "time_based_kits": "^1.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Timer } from "timezkit";
+import { Timer } from "time_based_kits";
 import { getAnswerID } from "../utils/checkAnswer.ts";
 import Question from "./question.tsx";
 import style from "./../styles/quizz.module.css";

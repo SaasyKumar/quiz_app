@@ -1,0 +1,63 @@
+# Learning
+
+- Don't use set State inside a component without any triggers like on click; will stuck in the loop since every set rerender the component.
+- What's the difference between button and normal div-> a11y keydown will be handled.
+- In setstate `i++` won't work
+  - `i++` POST return the original value and increment it -> So the sate assigned is same but if the index; but will assign right value if index is used somewhere, but the index state is used in any react component append check it won't work.
+  - `++i` will work PRE
+
+* While passing objects to a react component, don't pass the whole object, pass it every key value pair mentioned in the object.
+* `rem` in CSS don't know what but in ref to root element. I think it will be used on react apps and it have mobile too. Auto?
+* CSS transitions do not work with changes in display property.
+* justify-content: space-between;
+* for empty declarations
+
+```ts
+let answerSet: Record<string, string> = {};
+```
+
+- `useMemo` and `useEffect` hook
+- No comments should be at production but in code needed. can't trace the format anytime
+
+# Color
+
+- blue/green hues improve recall, while red increases attention but not memory.
+
+# Prettier
+
+- run `npx prettier . --write` before commit. other prettier hooks interrupt while writing code. or add in package.json script
+
+# Name
+
+- FOMizz - Fear of Missing Out
+- maze
+-
+- create bank instead of vault
+
+# icons
+
+- crushed paper and neuron links on the crushed edges
+- rubik cubes
+
+# Learning
+
+1. If **input component** is needed, it should have a input and label.
+   - So that it will be automatically support a11y
+   - clicking on any part of label will trigger that
+   - importantly while using forms it will be useful
+   - reworking toggle util.
+2. Use checked attribute selector when the state is just one rather than string concat to add class.
+3. using modules so that components class name don't collide with parent. So write class name with `_` separate not `-`.
+
+# Vocabulary
+
+1. Set1
+   - handle
+   - Util
+   - set
+   - reset
+2. Set 2
+   - is -> when boolean
+   - **Validate**
+
+- use camel case instead of `timeInMilliseconds` instead of `time_in_`
