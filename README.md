@@ -15,6 +15,7 @@
 - result board
 - a UI that show all user selected option and whether it is right or not.
 - View Score or consecutive test -> next test will only contain wrong answered
+- Two mode Quiz Mode and edit mode all md files -> 
 
 # Do
 
@@ -26,4 +27,5 @@
 - quiz title and time
 - a file upload and store it in top
 - long term or short term memory toggle
+- like dev doc just dark and light toggle
 

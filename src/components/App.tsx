@@ -5,6 +5,7 @@ import "../styles/App.css";
 import "../styles/themecolor.css";
 import "../styles/font.css";
 import sample_data from "./../../sample/vite.json";
+import ObsidianSidebar from "./sidebarsort.tsx";
 import sample_data2 from "./../../sample/qn.json";
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
   }
   return (
     <>
+      <ObsidianSidebar />
       {showMainUI ? MainUI : null}
       {mountQuizComp ? (
         <Quizz
